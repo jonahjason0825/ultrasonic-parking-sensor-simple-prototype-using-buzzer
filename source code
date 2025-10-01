@@ -1,0 +1,56 @@
+// C++ code
+//
+const int trigger=2;
+const int echo=3;
+const int buzz=8;
+float t=0.0;
+float dis=0.0;
+void setup()
+{
+  pinMode(echo, INPUT);
+  pinMode(trigger, OUTPUT);
+  pinMode(buzz, OUTPUT);
+  digitalWrite(trigger, LOW);
+  digitalWrite(buzz,LOW);
+}
+
+void loop()
+{
+  digitalWrite(trigger,LOW);
+  delay(2);
+  digitalWrite(trigger,HIGH);
+  delay(10);
+  digitalWrite(trigger,LOW);
+  t=pulseIn(echo, HIGH);
+  dis=(t*0.034)/2;
+  if (dis<=20)
+  {
+    tone(buzz,500);
+    delay(50);
+    noTone(buzz);
+    delay(50);
+    if (dis<=10)
+    {
+      tone(buzz,500);
+      delay(10);
+      noTone(buzz);
+      delay(10);
+      if (dis<=5)
+      {
+        tone(buzz,500);
+        delay(2500);
+        noTone(buzz);
+        
+      }
+      
+      
+    }
+   
+  }
+  else {
+    noTone(buzz);
+  }
+  delay(100);
+}
+
+  
