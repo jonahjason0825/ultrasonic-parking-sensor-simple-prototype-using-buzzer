@@ -1,5 +1,3 @@
-// C++ code
-//
 const int trigger=2;
 const int echo=3;
 const int buzz=8;
